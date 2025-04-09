@@ -1,12 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi CV</title>
-</head>
-<body>
-    <h1>Mi Currículum Vitae</h1>
-</body>
-</html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CV - Gary</title>
+    <style>
+      /* Estilos minimalistas */
+      body {
+        font-family: "Segoe UI", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 2rem;
+        color: #333;
+        background-color: #f8f9fa;
+      }
 
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .sobre-mi {
+        text-align: justify;
+        margin: 1rem 0;
+        line-height: 1.7;
+        color: #555;
+      }
+
+      a {
+        color: #3498db;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #2980b9;
+        text-decoration: underline;
+      }
+
+      h1,
+      h2 {
+        color: #2c3e50;
+        border-bottom: 2px solid #ecf0f1;
+        padding-bottom: 0.5rem;
+      }
+
+      .section {
+        margin-bottom: 2rem;
+      }
+
+      ul {
+        list-style-type: none;
+        padding-left: 0;
+      }
+
+      li {
+        margin-bottom: 0.5rem;
+        padding-left: 1rem;
+        border-left: 3px solid #3498db;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="cv-content"></div>
+    </div>
+
+    <script>
+      // Datos del CV - Modificar solo esta sección para actualizar
+      const cvData = {
+        sobreMi:
+          "Soy un ingeniero de software con pasión por crear soluciones tecnológicas innovadoras, con experiencia en desarrollo de software y un fuerte interés en proyectos creativos. Además de mi carrera profesional, disfruto explorando mi lado artístico a través de la fotografía y la música (guitarra), así como mi amor por el cine. Mi enfoque se centra en resolver problemas complejos con soluciones innovadoras y eficientes.",
+        personalInfo: {
+          nombre: "Cristian Gary Nuñez Jimenez",
+          titulo: "Software Engineer",
+          ubicacion: "Santa Cruz de la Sierra, Bolivia",
+          contacto: {
+            email: "cristiangnj@gmail.com",
+            telefono: "+591 76641121",
+            github: "https://github.com/CGary",
+            linkedin: "https://www.linkedin.com/in/cristian-gary-nj/#",
+          },
+        },
+        habilidades: [
+          "Python",
+          "JavaScript",
+          "React.js",
+          "Node.js",
+          "Git",
+          "Scrum",
+          "MongoDB",
+          "Django",
+          "HTML5", // Desarrollo web frontend
+          "CSS3", // Estilización web
+          "TypeScript", // JavaScript tipado
+          "Next.js", // Framework para React
+          "Express.js", // Framework backend para Node.js
+          "PostgreSQL", // Base de datos relacional
+          "Firebase", // Backend as a Service (BaaS)
+          "Docker", // Contenedores para despliegue
+          "Kubernetes", // Orquestación de contenedores
+          "REST APIs", // Diseño e implementación de APIs
+          "CI/CD (GitHub Actions)", // Automatización de despliegues
+          "Film Analysis", // Análisis cinematográfico estructural
+          "SQL Server", // Base de datos relacional
+          "Postman", // Herramienta para pruebas de APIs
+          "Golang", // Lenguaje de programación
+          "C++", // Lenguaje de programación
+          "C#", // Lenguaje de programación
+          "Java", // Lenguaje de programación
+          "PHP", // Lenguaje de programación
+        ],
+        experiencia: [
+          {
+            puesto: "Engineer",
+            empresa: "Consultora Prosur SRL",
+            periodo: "01/04/2009 - 01/12/2021",
+            logros: [
+              "Dar consultoria tecnológica a empresas del medio",
+              "Implementación tecnologías para la industria de gas y petróleo",
+            ],
+          },
+          {
+            puesto: "Software Engineer",
+            empresa: "Netbits",
+            periodo: "01/12/2021 - Presente",
+            logros: [
+              "Diseño e implementación de soluciones escalables",
+              "Liderazgo técnico en proyectos multidisciplinarios",
+            ],
+          },
+        ],
+        educacion: [
+          {
+            titulo: "Ingeniería de Sistemas",
+            institucion: "UTEPSA",
+            periodo: "2001 - 2008",
+          },
+        ],
+        intereses: [
+          "Fotografía digital",
+          "Composición musical",
+          "Análisis cinematográfico",
+        ],
+      };
+
+      // Renderizado dinámico - No modificar
+      function renderCV() {
+        const cvContent = document.getElementById("cv-content");
+
+        // Sección de Información Personal
+        cvContent.innerHTML = `
+                <header class="section">
+                    <h1>${cvData.personalInfo.nombre}</h1>
+                    <p><strong>${cvData.personalInfo.titulo}</strong></p>
+                    <p>📍 ${cvData.personalInfo.ubicacion}</p>
+                    <p>📧 ${cvData.personalInfo.contacto.email}</p>
+                    <p>📱 ${cvData.personalInfo.contacto.telefono}</p>
+                    <p>
+                        🐱 <a href="${
+                          cvData.personalInfo.contacto.github
+                        }" target="_blank">GitHub</a> | 
+                        👔 <a href="${
+                          cvData.personalInfo.contacto.linkedin
+                        }" target="_blank">LinkedIn</a>
+                    </p>
+                </header>
+
+                <section class="section">
+                    <h2>Sobre Mí</h2>
+                    <p class="sobre-mi">${cvData.sobreMi}</p>
+                </section>
+
+                <section class="section">
+                    <h2>Experiencia Profesional</h2>
+                    ${cvData.experiencia
+                      .map(
+                        (exp) => `
+                        <div>
+                            <h3>${exp.puesto} - ${exp.empresa}</h3>
+                            <p><em>${exp.periodo}</em></p>
+                            <ul>
+                                ${exp.logros
+                                  .map((l) => `<li>${l}</li>`)
+                                  .join("")}
+                            </ul>
+                        </div>
+                    `
+                      )
+                      .join("")}
+                </section>
+
+                <section class="section">
+                    <h2>Educación</h2>
+                    ${cvData.educacion
+                      .map(
+                        (edu) => `
+                        <div>
+                            <h3>${edu.titulo}</h3>
+                            <p>${edu.institucion}</p>
+                            <p><em>${edu.periodo}</em></p>
+                        </div>
+                    `
+                      )
+                      .join("")}
+                </section>
+
+                <section class="section">
+                    <h2>Habilidades Técnicas</h2>
+                    <ul>
+                        ${cvData.habilidades
+                          .map((h) => `<li>${h}</li>`)
+                          .join("")}
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>Intereses Personales</h2>
+                    <ul>
+                        ${cvData.intereses.map((i) => `<li>${i}</li>`).join("")}
+                    </ul>
+                </section>
+            `;
+      }
+
+      // Inicializar
+      renderCV();
+    </script>
+  </body>
+</html>
