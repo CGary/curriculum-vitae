@@ -63,13 +63,18 @@
         border-left: 3px solid #3498db;
       }
     </style>
+    <!-- Preact desde CDN -->
+    <script src="https://unpkg.com/preact@10.19.2/dist/preact.umd.js"></script>
+    <script src="https://unpkg.com/preact@10.19.2/hooks/dist/hooks.umd.js"></script>
+    <script src="https://unpkg.com/preact@10.19.2/compat/dist/compat.umd.js"></script>
+    <script src="https://unpkg.com/htm@3.1.1/dist/htm.umd.js"></script>
   </head>
   <body>
     <div class="container">
       <div id="cv-content"></div>
     </div>
 
-    <script>
+    <script type="module">
       // Datos del CV - Modificar solo esta sección para actualizar
       const cvData = {
         sobreMi:
@@ -146,88 +151,105 @@
           "Análisis cinematográfico",
         ],
       };
+      
+      const { h, render, Component } = window.preact;
+      const html = window.htm.bind(h);
 
-      // Renderizado dinámico - No modificar
-      function renderCV() {
-        const cvContent = document.getElementById("cv-content");
-
-        // Sección de Información Personal
-        cvContent.innerHTML = `
-                <header class="section">
-                    <h1>${cvData.personalInfo.nombre}</h1>
-                    <p><strong>${cvData.personalInfo.titulo}</strong></p>
-                    <p>📍 ${cvData.personalInfo.ubicacion}</p>
-                    <p>📧 ${cvData.personalInfo.contacto.email}</p>
-                    <p>📱 ${cvData.personalInfo.contacto.telefono}</p>
-                    <p>
-                        🐱 <a href="${
-                          cvData.personalInfo.contacto.github
-                        }" target="_blank">GitHub</a> | 
-                        👔 <a href="${
-                          cvData.personalInfo.contacto.linkedin
-                        }" target="_blank">LinkedIn</a>
-                    </p>
-                </header>
-
-                <section class="section">
-                    <h2>Sobre Mí</h2>
-                    <p class="sobre-mi">${cvData.sobreMi}</p>
-                </section>
-
-                <section class="section">
-                    <h2>Experiencia Profesional</h2>
-                    ${cvData.experiencia
-                      .map(
-                        (exp) => `
-                        <div>
-                            <h3>${exp.puesto} - ${exp.empresa}</h3>
-                            <p><em>${exp.periodo}</em></p>
-                            <ul>
-                                ${exp.logros
-                                  .map((l) => `<li>${l}</li>`)
-                                  .join("")}
-                            </ul>
-                        </div>
-                    `
-                      )
-                      .join("")}
-                </section>
-
-                <section class="section">
-                    <h2>Educación</h2>
-                    ${cvData.educacion
-                      .map(
-                        (edu) => `
-                        <div>
-                            <h3>${edu.titulo}</h3>
-                            <p>${edu.institucion}</p>
-                            <p><em>${edu.periodo}</em></p>
-                        </div>
-                    `
-                      )
-                      .join("")}
-                </section>
-
-                <section class="section">
-                    <h2>Habilidades Técnicas</h2>
-                    <ul>
-                        ${cvData.habilidades
-                          .map((h) => `<li>${h}</li>`)
-                          .join("")}
-                    </ul>
-                </section>
-
-                <section class="section">
-                    <h2>Intereses Personales</h2>
-                    <ul>
-                        ${cvData.intereses.map((i) => `<li>${i}</li>`).join("")}
-                    </ul>
-                </section>
-            `;
+      function Header({ personalInfo }) {
+        return html`
+          <header class="section">
+            <h1>${personalInfo.nombre}</h1>
+            <p><strong>${personalInfo.titulo}</strong></p>
+            <p>📍 ${personalInfo.ubicacion}</p>
+            <p>📧 ${personalInfo.contacto.email}</p>
+            <p>📱 ${personalInfo.contacto.telefono}</p>
+            <p>
+              🐱 <a href=${personalInfo.contacto.github} target="_blank">GitHub</a> | 
+              👔 <a href=${personalInfo.contacto.linkedin} target="_blank">LinkedIn</a>
+            </p>
+          </header>
+        `;
       }
 
-      // Inicializar
-      renderCV();
+      function SobreMi({ sobreMi }) {
+        return html`
+          <section class="section">
+            <h2>Sobre Mí</h2>
+            <p class="sobre-mi">${sobreMi}</p>
+          </section>
+        `;
+      }
+
+      function Experiencia({ experiencia }) {
+        return html`
+          <section class="section">
+            <h2>Experiencia Profesional</h2>
+            ${experiencia.map(
+              (exp) => html`
+                <div>
+                  <h3>${exp.puesto} - ${exp.empresa}</h3>
+                  <p><em>${exp.periodo}</em></p>
+                  <ul>
+                    ${exp.logros.map((l) => html`<li>${l}</li>`)}
+                  </ul>
+                </div>
+              `
+            )}
+          </section>
+        `;
+      }
+
+      function Educacion({ educacion }) {
+        return html`
+          <section class="section">
+            <h2>Educación</h2>
+            ${educacion.map(
+              (edu) => html`
+                <div>
+                  <h3>${edu.titulo}</h3>
+                  <p>${edu.institucion}</p>
+                  <p><em>${edu.periodo}</em></p>
+                </div>
+              `
+            )}
+          </section>
+        `;
+      }
+
+      function Habilidades({ habilidades }) {
+        return html`
+          <section class="section">
+            <h2>Habilidades Técnicas</h2>
+            <ul>
+              ${habilidades.map((h) => html`<li>${h}</li>`)}
+            </ul>
+          </section>
+        `;
+      }
+
+      function Intereses({ intereses }) {
+        return html`
+          <section class="section">
+            <h2>Intereses Personales</h2>
+            <ul>
+              ${intereses.map((i) => html`<li>${i}</li>`)}
+            </ul>
+          </section>
+        `;
+      }
+
+      function CV({ cvData }) {
+        return html`
+          <${Header} personalInfo=${cvData.personalInfo} />
+          <${SobreMi} sobreMi=${cvData.sobreMi} />
+          <${Experiencia} experiencia=${cvData.experiencia} />
+          <${Educacion} educacion=${cvData.educacion} />
+          <${Habilidades} habilidades=${cvData.habilidades} />
+          <${Intereses} intereses=${cvData.intereses} />
+        `;
+      }
+
+      render(html`<${CV} cvData=${cvData} />`, document.getElementById("cv-content"));
     </script>
   </body>
 </html>
