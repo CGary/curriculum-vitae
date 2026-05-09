@@ -1,216 +1,572 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CV - Gary</title>
+    <meta
+      name="description"
+      content="CV de Cristian Gary Nuñez Jimenez — Senior Software Engineer y Frontend Tech Lead con más de una década de experiencia en sistemas industriales, productos SaaS y refactorización de código legacy."
+    />
+    <title>
+      Cristian Gary Nuñez Jimenez — Senior Software Engineer & Frontend Tech
+      Lead
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-      /* Estilos minimalistas */
-      body {
-        font-family: "Segoe UI", sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 2rem;
-        color: #333;
-        background-color: #f8f9fa;
+      :root {
+        --ink: #1a1a1a;
+        --muted: #555;
+        --soft: #6b6b6b;
+        --accent: #2c5aa0;
+        --rule: #d8dde3;
+        --bg: #ffffff;
+        --page-bg: #f3f4f6;
       }
 
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      * {
+        box-sizing: border-box;
       }
-      .sobre-mi {
-        text-align: justify;
-        margin: 1rem 0;
-        line-height: 1.7;
-        color: #555;
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Arial,
+          sans-serif;
+        font-size: 11pt;
+        line-height: 1.5;
+        color: var(--ink);
+        background: var(--page-bg);
+        padding: 2rem 1rem;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .page {
+        max-width: 820px;
+        margin: 0 auto;
+        background: var(--bg);
+        padding: 2.75rem 3rem;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+        border-radius: 4px;
       }
 
       a {
-        color: #3498db;
+        color: var(--accent);
         text-decoration: none;
-        transition: color 0.3s ease;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.15s ease;
       }
 
       a:hover {
-        color: #2980b9;
-        text-decoration: underline;
+        border-bottom-color: var(--accent);
       }
 
       h1,
+      h2,
+      h3 {
+        margin: 0;
+        color: var(--ink);
+      }
+
+      h1 {
+        font-size: 22pt;
+        font-weight: 700;
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+      }
+
+      .role-title {
+        font-size: 12pt;
+        font-weight: 500;
+        color: var(--accent);
+        margin: 0.15rem 0 0.6rem;
+      }
+
+      .contact {
+        font-size: 9.75pt;
+        color: var(--muted);
+        line-height: 1.65;
+        margin: 0;
+      }
+
+      .contact a {
+        color: inherit;
+      }
+
+      .contact .sep {
+        margin: 0 0.45rem;
+        color: var(--rule);
+      }
+
       h2 {
-        color: #2c3e50;
-        border-bottom: 2px solid #ecf0f1;
-        padding-bottom: 0.5rem;
+        font-size: 10.5pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin: 1.4rem 0 0.55rem;
+        padding-bottom: 0.2rem;
+        border-bottom: 1.5px solid var(--accent);
       }
 
-      .section {
-        margin-bottom: 2rem;
+      section {
+        margin-bottom: 0.4rem;
       }
 
-      ul {
-        list-style-type: none;
-        padding-left: 0;
+      .summary {
+        text-align: justify;
+        margin: 0;
+        color: var(--ink);
       }
 
-      li {
-        margin-bottom: 0.5rem;
-        padding-left: 1rem;
-        border-left: 3px solid #3498db;
+      .role-block {
+        margin-bottom: 0.95rem;
+      }
+
+      .role-block .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.4rem 1rem;
+        margin-bottom: 0.1rem;
+      }
+
+      .role-block h3 {
+        font-size: 11pt;
+        font-weight: 700;
+      }
+
+      .role-block .company {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .role-block .meta {
+        font-size: 9.5pt;
+        color: var(--soft);
+        font-style: italic;
+        white-space: nowrap;
+      }
+
+      .role-block .progression {
+        font-size: 9.75pt;
+        color: var(--soft);
+        margin: 0.05rem 0 0.3rem;
+      }
+
+      .role-block ul {
+        margin: 0.2rem 0 0.3rem 1.1rem;
+        padding: 0;
+      }
+
+      .role-block li {
+        margin-bottom: 0.22rem;
+        padding: 0;
+        list-style: disc;
+        text-align: justify;
+      }
+
+      .role-block .stack {
+        font-size: 9.5pt;
+        color: var(--soft);
+        margin: 0.15rem 0 0;
+      }
+
+      .role-block .stack strong {
+        color: var(--ink);
+        font-weight: 600;
+      }
+
+      dl.skills {
+        display: grid;
+        grid-template-columns: 175px 1fr;
+        gap: 0.35rem 1rem;
+        margin: 0;
+      }
+
+      dl.skills dt {
+        font-weight: 600;
+        color: var(--ink);
+      }
+
+      dl.skills dd {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .edu-block {
+        margin-bottom: 0.55rem;
+      }
+
+      .edu-block .head {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .edu-block h3 {
+        font-size: 10.5pt;
+        font-weight: 700;
+      }
+
+      .edu-block .institution {
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      .edu-block .meta {
+        font-size: 9.5pt;
+        color: var(--soft);
+        font-style: italic;
+      }
+
+      .edu-block .detail {
+        font-size: 9.75pt;
+        color: var(--muted);
+        margin: 0.1rem 0 0;
+      }
+
+      .languages {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        margin: 0;
+      }
+
+      .languages .item strong {
+        font-weight: 600;
+      }
+
+      .languages .item span {
+        color: var(--muted);
+      }
+
+      @media print {
+        @page {
+          size: A4;
+          margin: 1.1cm 1.4cm;
+        }
+
+        html,
+        body {
+          background: #ffffff;
+          color: #000000;
+          font-size: 9.5pt;
+          line-height: 1.4;
+          padding: 0;
+        }
+
+        .page {
+          max-width: none;
+          margin: 0;
+          padding: 0;
+          box-shadow: none;
+          border-radius: 0;
+          background: #ffffff;
+        }
+
+        a {
+          color: inherit !important;
+          border: 0 !important;
+          text-decoration: none !important;
+        }
+
+        h1 {
+          font-size: 18pt;
+        }
+
+        .role-title {
+          font-size: 10.5pt;
+          margin-bottom: 0.35rem;
+        }
+
+        .contact {
+          font-size: 9pt;
+          line-height: 1.5;
+        }
+
+        h2 {
+          font-size: 9.5pt;
+          margin: 0.7rem 0 0.3rem;
+          padding-bottom: 0.12rem;
+          border-bottom-width: 1px;
+          color: #000;
+          border-color: #000;
+        }
+
+        .role-block,
+        .edu-block,
+        section {
+          page-break-inside: avoid;
+        }
+
+        .role-block {
+          margin-bottom: 0.5rem;
+        }
+
+        .role-block h3,
+        .edu-block h3 {
+          font-size: 9.75pt;
+        }
+
+        .role-block .company,
+        .edu-block .institution {
+          color: #000;
+        }
+
+        .role-block li {
+          margin-bottom: 0.1rem;
+        }
+
+        .role-block .stack,
+        .role-block .progression,
+        .role-block .meta,
+        .edu-block .meta,
+        .edu-block .detail {
+          color: #333;
+          font-size: 8.75pt;
+        }
+
+        dl.skills {
+          grid-template-columns: 145px 1fr;
+          gap: 0.2rem 0.8rem;
+        }
+
+        .summary {
+          font-size: 9.5pt;
+        }
       }
     </style>
-    <!-- Preact desde CDN -->
     <script src="https://unpkg.com/preact@10.19.2/dist/preact.umd.js"></script>
-    <!-- <script src="https://unpkg.com/preact@10.19.2/hooks/dist/hooks.umd.js"></script>
-    <script src="https://unpkg.com/preact@10.19.2/compat/dist/compat.umd.js"></script> -->
     <script src="https://unpkg.com/htm@3.1.1/dist/htm.umd.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div id="cv-content"></div>
-    </div>
+    <main class="page" id="cv-content"></main>
 
     <script type="module">
-      // Datos del CV - Modificar solo esta sección para actualizar
       const cvData = {
-        sobreMi:
-          "Soy un ingeniero de software con pasión por crear soluciones tecnológicas innovadoras, con experiencia en desarrollo de software y un fuerte interés en proyectos creativos. Además de mi carrera profesional, disfruto explorando mi lado artístico a través de la fotografía y la música (guitarra), así como mi amor por el cine. Mi enfoque se centra en resolver problemas complejos con soluciones innovadoras y eficientes.",
-        personalInfo: {
+        personal: {
           nombre: "Cristian Gary Nuñez Jimenez",
-          titulo: "Software Engineer",
+          titulo: "Senior Software Engineer · Tech Lead",
           ubicacion: "Santa Cruz de la Sierra, Bolivia",
-          contacto: {
-            email: "cristiangnj@gmail.com",
-            telefono: "+591 76641121",
-            github: "https://github.com/CGary",
-            linkedin: "https://www.linkedin.com/in/cristian-gary-nj/#",
+          email: "cristiangnj@gmail.com",
+          telefono: "+591 76641121",
+          github: {
+            url: "https://github.com/CGary",
+            label: "github.com/CGary",
+          },
+          linkedin: {
+            url: "https://www.linkedin.com/in/cristian-gary-nj",
+            label: "linkedin.com/in/cristian-gary-nj",
           },
         },
-        habilidades: [
-          "JavaScript",
-          "React.js",
-          "Node.js",
-          "Git",
-          "bun.sh",
-          "Docker",
-          "Python",
-          "Django",
-          "HTML5",
-          "CSS3",
-          "TypeScript",
-          "PostgreSQL",
-          "Next.js",
-          "Express.js",          
-          "Firebase",
-          "REST APIs",
-          "CI/CD (Gitlab)",
-          "SQL Server",
-          "Postman",
-          "C#",
-          "Golang",
-          "Java",
-          "C++",
-          "PHP",
-          "Scrum",
-          "MongoDB",
-        ],
+        resumen:
+          "Senior Software Engineer con casi dos décadas de experiencia, desempeñando actualmente el cargo de Software Engineer del equipo de Tecnología en tuGerente. Mi trayectoria combina once años integrando sistemas industriales (SCADA iFIX, drivers Modbus y aplicaciones web para la cadena de gas y petróleo) con cuatro años recientes liderando refactorizaciones sobre código legacy y modernización de productos SaaS. Mi diferenciador en 2026 es la integración disciplinada de modelos de IA en el desarrollo de software. Autodidacta por convicción: traduzco la curiosidad técnica en decisiones de ingeniería defendibles ante el negocio.",
         experiencia: [
           {
-            puesto: "Engineer",
-            empresa: "Consultora Prosur SRL",
-            periodo: "01/04/2009 - 30/11/2021",
+            puesto: "Software Engineer",
+            empresa: "tuGerente",
+            periodo: "Dic 2021 – Presente",
+            ubicacion: "Santa Cruz, Bolivia · Remoto",
+            progresion:
+              "Progresión: Full Stack Developer → Principal Front End Engineer → Frontend Team Technical Lead → Senior Software Engineer.",
             logros: [
-              "Dar consultoria tecnológica a empresas del medio",
-              "Implementación tecnologías para la industria de gas y petróleo",
+              "Lidero técnicamente el equipo de Tecnología, conduciendo code reviews, planificación de releases y la integración disciplinada de modelos de IA en el ciclo de desarrollo de software.",
+              "Implementé una estrategia de aislamiento total para trabajar sobre código legacy de cinco años de antigüedad: un “white-shell” con CSS Grid donde los componentes nuevos viven sin heredar la cascada de estilos previa, eliminando conflictos visuales sin necesidad de refactorización masiva.",
+              "Diseño e implementación de arquitecturas CI/CD para el despliegue automatizado de aplicaciones frontend utilizando AWS S3 y CloudFront.",
+              "Estandarización y automatización de políticas de calidad de código mediante la implementación de linters y validaciones lógicas en pipelines de GitLab CI/CD.",
             ],
+            stack:
+              "Go, Python (Django), TypeScript, React, Svelte 5, PostgreSQL, AWS (Fargate, CloudFront, S3, ECS), GitLab CI/CD, Docker, Sentry",
           },
           {
-            puesto: "Software Engineer",
-            empresa: "Netbits",
-            periodo: "01/12/2021 - Presente",
+            puesto: "Desarrollador de Software",
+            empresa: "Consultora Prosur SRL",
+            periodo: "Nov 2010 – Nov 2021",
+            ubicacion: "Santa Cruz, Bolivia",
             logros: [
-              "Diseño e implementación de soluciones escalables",
-              "Liderazgo técnico en proyectos multidisciplinarios",
+              "Desarrollo e implementación de un sistema web para la validación y conciliación de mediciones de gas natural, aplicando algoritmos de cálculo basados en los estándares AGA 7 y AGA 8.",
+              "Construí sistemas web de visualización y telemetría para mediciones de gas, integrando hardware de campo con backends industriales en operaciones de la cadena energética boliviana.",
+              "Desarrollé drivers de comunicación Modbus para dispositivos de medición, garantizando la fidelidad de datos en flujos críticos de la industria de gas y petróleo.",
+              "Operé como responsable del sistema SCADA iFIX, manteniendo la observabilidad y continuidad de operaciones industriales críticas.",
+              "Provisioné infraestructura de red, configuración de routers y cableado estructurado para clientes industriales, complementando el rol de software con responsabilidades de operaciones.",
             ],
+            stack:
+              "C#, ASP.NET, MS SQL Server, T-SQL, JavaScript, jQuery, SCADA iFIX, Modbus, Automatización industrial",
+          },
+          {
+            puesto: "Pasante de Sistemas",
+            empresa: "Transierra SA",
+            periodo: "Feb 2009 – Oct 2009",
+            ubicacion: "Santa Cruz, Bolivia",
+            logros: [
+              "Desarrollé el sistema interno de novedades operativas y participé en el mantenimiento de la infraestructura de servidores corporativos.",
+            ],
+          },
+        ],
+        habilidades: [
+          {
+            categoria: "Frontend",
+            valores:
+              "Svelte 5 ($props, runes) · React.js · Redux · TypeScript · JavaScript · HTML5 · CSS · Styled-Components · Webpack · Babel",
+          },
+          {
+            categoria: "Testing & Calidad",
+            valores: "Jest · Playwright · ESLint · Sentry · Code reviews",
+          },
+          {
+            categoria: "Backend",
+            valores:
+              "Go · Python (Django) · Node.js · Express.js · ASP.NET · PHP",
+          },
+          {
+            categoria: "Bases de Datos",
+            valores: "PostgreSQL · MS SQL Server · T-SQL · MySQL · Firebase",
+          },
+          {
+            categoria: "DevOps & Infra",
+            valores:
+              "AWS (Fargate, CloudFront, S3, ECS) · Docker · Git · GitHub · GitLab CI/CD · Linux (Arch/CachyOS, Debian) · Nginx",
+          },
+          {
+            categoria: "Arquitectura & Metodologías",
+            valores:
+              "Arquitectura Hexagonal · Spec-Driven Development (SDD) · Behavior-Driven Development (BDD) · Programación Funcional · RAG (Retrieval-Augmented Generation)",
+          },
+          {
+            categoria: "IA aplicada al ciclo dev",
+            valores:
+              "Agentes de codificación (Claude Code, Gemini CLI, Codex CLI, OpenCode, Qwen CLI) · Local LLMs (Ollama) · Tooling propio en Go para gestión de contexto (Hybrid Semantic Memory Engine)",
+          },
+          {
+            categoria: "Sistemas Industriales",
+            valores:
+              "Estándares AGA 7/8 · SCADA iFIX · Modbus · Automatización industrial",
+          },
+          {
+            categoria: "Liderazgo",
+            valores:
+              "Liderazgo de equipos · Gestión de proyectos · Mentoría técnica · Estrategias de 'Building in Public'",
+          },
+          {
+            categoria: "Lenguajes adicionales",
+            valores: "C# · Java · C++ · Pascal",
+          },
+          {
+            categoria: "Mobile (Híbrido)",
+            valores: "Apache Cordova · Ionic Framework · PhoneGap",
           },
         ],
         educacion: [
           {
             titulo: "Ingeniería de Sistemas",
-            institucion: "UTEPSA",
-            periodo: "2001 - 2008",
+            institucion:
+              "Universidad Tecnológica Privada de Santa Cruz (UTEPSA)",
+            periodo: "2004 – 2010",
+            detalle:
+              "Integrante del equipo OVERFLOW representando a la universidad en ACM-ICPC 2008 y 2009.",
+          },
+          {
+            titulo: "Especialización en Desarrollo Web",
+            institucion: "Platzi",
+            periodo: "2019 – 2021",
+            detalle:
+              "Cursos: React.js, React Avanzado, CSS Grid Layout, HTML y CSS, Webpack, Git y GitHub Profesional.",
+          },
+          {
+            titulo: "Estudios iniciales en Ingeniería",
+            institucion: "Universidad Autónoma Gabriel René Moreno (UAGRM)",
+            periodo: "2003 – 2004",
           },
         ],
-        intereses: [
-          "Fotografía",
-          "Composición musical",
-          "Análisis cinematográfico",
+        idiomas: [
+          { idioma: "Español", nivel: "Nativo" },
+          { idioma: "Inglés", nivel: "Lectura técnica" },
         ],
       };
-      
-      const { h, render, Component } = window.preact;
+
+      const { h, render } = window.preact;
       const html = window.htm.bind(h);
 
-      function Header({ personalInfo }) {
+      function Header({ personal }) {
         return html`
-          <header class="section">
-            <h1>${personalInfo.nombre}</h1>
-            <p><strong>${personalInfo.titulo}</strong></p>
-            <p>📍 ${personalInfo.ubicacion}</p>
-            <p>📧 ${personalInfo.contacto.email}</p>
-            <p>📱 ${personalInfo.contacto.telefono}</p>
-            <p>
-              🐱 <a href=${personalInfo.contacto.github} target="_blank">GitHub</a> | 
-              👔 <a href=${personalInfo.contacto.linkedin} target="_blank">LinkedIn</a>
+          <section>
+            <h1>${personal.nombre}</h1>
+            <p class="role-title">${personal.titulo}</p>
+            <p class="contact">
+              ${personal.ubicacion}<span class="sep">·</span>
+              <a href=${"mailto:" + personal.email}>${personal.email}</a>
+              <span class="sep">·</span> ${personal.telefono}
+              <br />
+              <a href=${personal.linkedin.url} target="_blank" rel="noopener"
+                >${personal.linkedin.label}</a
+              >
+              <span class="sep">·</span>
+              <a href=${personal.github.url} target="_blank" rel="noopener"
+                >${personal.github.label}</a
+              >
             </p>
-          </header>
+          </section>
         `;
       }
 
-      function SobreMi({ sobreMi }) {
+      function Resumen({ resumen }) {
         return html`
-          <section class="section">
-            <h2>Sobre Mí</h2>
-            <p class="sobre-mi">${sobreMi}</p>
+          <section>
+            <h2>Perfil Profesional</h2>
+            <p class="summary">${resumen}</p>
           </section>
         `;
       }
 
       function Experiencia({ experiencia }) {
         return html`
-          <section class="section">
+          <section>
             <h2>Experiencia Profesional</h2>
             ${experiencia.map(
               (exp) => html`
-                <div>
-                  <h3>${exp.puesto} - ${exp.empresa}</h3>
-                  <p><em>${exp.periodo}</em></p>
+                <article class="role-block">
+                  <div class="head">
+                    <h3>
+                      ${exp.puesto}
+                      <span class="company"> · ${exp.empresa}</span>
+                    </h3>
+                    <span class="meta"
+                      >${exp.periodo}${exp.ubicacion
+                        ? html` · ${exp.ubicacion}`
+                        : null}</span
+                    >
+                  </div>
+                  ${exp.progresion
+                    ? html`<p class="progression">${exp.progresion}</p>`
+                    : null}
                   <ul>
                     ${exp.logros.map((l) => html`<li>${l}</li>`)}
                   </ul>
-                </div>
-              `
-            )}
-          </section>
-        `;
-      }
-
-      function Educacion({ educacion }) {
-        return html`
-          <section class="section">
-            <h2>Educación</h2>
-            ${educacion.map(
-              (edu) => html`
-                <div>
-                  <h3>${edu.titulo}</h3>
-                  <p>${edu.institucion}</p>
-                  <p><em>${edu.periodo}</em></p>
-                </div>
-              `
+                  ${exp.stack
+                    ? html`<p class="stack">
+                        <strong>Stack:</strong> ${exp.stack}
+                      </p>`
+                    : null}
+                </article>
+              `,
             )}
           </section>
         `;
@@ -218,38 +574,75 @@
 
       function Habilidades({ habilidades }) {
         return html`
-          <section class="section">
+          <section>
             <h2>Habilidades Técnicas</h2>
-            <ul>
-              ${habilidades.map((h) => html`<li>${h}</li>`)}
-            </ul>
+            <dl class="skills">
+              ${habilidades.map(
+                (h) => html`
+                  <dt>${h.categoria}</dt>
+                  <dd>${h.valores}</dd>
+                `,
+              )}
+            </dl>
           </section>
         `;
       }
 
-      function Intereses({ intereses }) {
+      function Educacion({ educacion }) {
         return html`
-          <section class="section">
-            <h2>Intereses Personales</h2>
-            <ul>
-              ${intereses.map((i) => html`<li>${i}</li>`)}
-            </ul>
+          <section>
+            <h2>Educación</h2>
+            ${educacion.map(
+              (e) => html`
+                <article class="edu-block">
+                  <div class="head">
+                    <h3>
+                      ${e.titulo}
+                      <span class="institution"> · ${e.institucion}</span>
+                    </h3>
+                    <span class="meta">${e.periodo}</span>
+                  </div>
+                  ${e.detalle ? html`<p class="detail">${e.detalle}</p>` : null}
+                </article>
+              `,
+            )}
           </section>
         `;
       }
 
-      function CV({ cvData }) {
+      function Idiomas({ idiomas }) {
         return html`
-          <${Header} personalInfo=${cvData.personalInfo} />
-          <${SobreMi} sobreMi=${cvData.sobreMi} />
-          <${Experiencia} experiencia=${cvData.experiencia} />
-          <${Educacion} educacion=${cvData.educacion} />
-          <${Habilidades} habilidades=${cvData.habilidades} />
-          <${Intereses} intereses=${cvData.intereses} />
+          <section>
+            <h2>Idiomas</h2>
+            <p class="languages">
+              ${idiomas.map(
+                (i) => html`
+                  <span class="item"
+                    ><strong>${i.idioma}</strong> —
+                    <span>${i.nivel}</span></span
+                  >
+                `,
+              )}
+            </p>
+          </section>
         `;
       }
 
-      render(html`<${CV} cvData=${cvData} />`, document.getElementById("cv-content"));
+      function CV({ data }) {
+        return html`
+          <${Header} personal=${data.personal} />
+          <${Resumen} resumen=${data.resumen} />
+          <${Experiencia} experiencia=${data.experiencia} />
+          <${Habilidades} habilidades=${data.habilidades} />
+          <${Educacion} educacion=${data.educacion} />
+          <${Idiomas} idiomas=${data.idiomas} />
+        `;
+      }
+
+      render(
+        html`<${CV} data=${cvData} />`,
+        document.getElementById("cv-content"),
+      );
     </script>
   </body>
 </html>
